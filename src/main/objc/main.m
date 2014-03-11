@@ -56,7 +56,7 @@
 	NSArray *wordsAndEmptyStrings = [input componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 	NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
 	
-	NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
+	NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
 	NSArray *fileLines = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
 	
 	NSUInteger countWord = 0;
@@ -68,6 +68,7 @@
 		NSUInteger countLine = 0;
 		BOOL foundWord = NO;
 		while ((countLine < [fileLines count]) && !foundWord) {
+			NSString *line = [fileLines objectAtIndex:countLine];
 			// Trim the line so that new lines are not used in comparisons
 			NSString *lineWithoutSpace = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 			if ([word isEqualToString:lineWithoutSpace]) {
@@ -81,6 +82,14 @@
 			ret = [words objectAtIndex:countWord];
 		}	
 		countWord++;
+	}
+	/* 
+	 * In the event that all words in the user input are found in the list
+	 * of common English words, we want to just select the last word from 
+	 * the input
+	 */		
+	if (!foundNoun){
+		ret = [words objectAtIndex:[words count]-1];
 	}
 	return ret;
 }
@@ -160,7 +169,7 @@ double conditionalFrequency (char *filePath, char *head, char *prep,
  */
 int main (int argc, const char *argv []) {
 
-	@autoreleasepool
+	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
 	NSLog(@"\nWelcome to the first MadlyAmbiguous demo!\n");
 	NSLog(@"\nComplete the following sentence...\n");
@@ -170,10 +179,12 @@ int main (int argc, const char *argv []) {
 	
 	NSString *userInput = [MadHelper getInputFromUser];
 	
-/*
+	
+
 	//Find noun
 	NSString *noun = [MadHelper findNoun:userInput usingFile:@ENG_COMMON_PATH];
-
+	NSLog(noun);
+/*
 	double ateFrequency = conditionalFrequency(ARCS_PATH, HEAD_ATE, 
 		PREP_TAG, noun);
 	double spagFrequency = conditionalFrequency(ARCS_PATH, HEAD_SPAG,
@@ -202,5 +213,6 @@ int main (int argc, const char *argv []) {
 	}
 	
 */
+[pool drain];
 	return 0;
 }

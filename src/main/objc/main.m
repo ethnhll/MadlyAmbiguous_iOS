@@ -16,9 +16,8 @@
 #define ENG_COMMON_PATH "/home/hill1303/MadlyAmbiguous/src/main/resources/CommonEnglish"
 
 #define PREP_TAG " with/"
-#define HEAD_ATE "ate\t"
+#define ATE_WITH_REGEX "^\bate\b\s.+\b\swith\b/.+$"
 #define HEAD_SPAG "spaghetti\t"
-#define NOUN_LABEL "/NN"
 
 #define HEADS 1
 
@@ -30,6 +29,7 @@
 @interface MadHelper : NSObject
 +(NSString *)getInputFromUser;
 +(NSString *)findNoun:(NSString *)input usingFile:(NSString *)filePath;
++(double)conditionalPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath;
 @end
 
 
@@ -63,7 +63,6 @@
 	BOOL foundNoun = NO;
 	NSString *ret;
 	while ((countWord < [words count]) && !foundNoun) {
-		
 		NSString *word = [words objectAtIndex:countWord];
 		NSUInteger countLine = 0;
 		BOOL foundWord = NO;
@@ -92,6 +91,22 @@
 		ret = [words objectAtIndex:[words count]-1];
 	}
 	return ret;
+}
+
++(double)conditionalPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath {
+	NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+	NSRange searchRange = NSMakeRange(0, [fileContents length]);
+	NSError *error = nil;
+	
+	NSRegularExpression* regexGiven = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
+	NSArray *matchesGiven = [regexGiven matchesInString:fileContents options:0 range:searchRange];
+	
+	for (NSTextCheckingResult* match in matchesGiven) {
+		NSString* matchText = [searchedString substringWithRange:[match range]];
+		NSLog(@"match: %@", matchText);
+	}
+	
+	return 1.0d;
 }
 
 @end
@@ -175,15 +190,14 @@ int main (int argc, const char *argv []) {
 	NSLog(@"\nComplete the following sentence...\n");
 	NSLog(@"\nI ate spaghetti with ");
 	
-	// Call helper function to get an NSString of the user input
-	
 	NSString *userInput = [MadHelper getInputFromUser];
 	
-	
-
 	//Find noun
 	NSString *noun = [MadHelper findNoun:userInput usingFile:@ENG_COMMON_PATH];
-	NSLog(noun);
+	[MadHelper conditionalPPAFrequency:noun givenRegex:@ATE_WITH_REGEX usingFile:@ARCS_PATH];
+	
+	
+	
 /*
 	double ateFrequency = conditionalFrequency(ARCS_PATH, HEAD_ATE, 
 		PREP_TAG, noun);

@@ -22,77 +22,70 @@
 
 #define HEADS 1
 
+
 /*----------------------------------------------------------------------------------------------*/
 /* Function Definitions */
 /*----------------------------------------------------------------------------------------------*/
 
-double conditionalFrequency (char *filePath, char *headWord, char *preposition, 
-	char *novelWord);
-int getFrequency (NSString *line);
-BOOL containsWord (char *expression, NSString *string);
-char* findNoun (char * userInput, char* filePath);
+@interface MadHelper : NSObject
++(NSString *)getInputFromUser;
++(NSString *)findNoun:(NSString *)input usingFile:(NSString *)filePath;
+@end
+
 
 /*----------------------------------------------------------------------------------------------*/
 /* Function Implementations */
 /*----------------------------------------------------------------------------------------------*/
 
-char* findNoun (char * userInput, char* filePath){
+@implementation MadHelper
 
-	// Break input into an array of strings
-	NSString *convertedInput = [NSString stringWithUTF8String: userInput];
++(NSString *)getInputFromUser {
 
-	printf("I'm here");
+	char inputFromUser [MAXSTRING_LENGTH];
+	fgets(inputFromUser, MAXSTRING_LENGTH, stdin);
 
-	NSArray *wordsAndEmptyStrings = [convertedInput componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-	NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
-	
-	BOOL seenBefore = false;
-	BOOL foundNoun = false;
-	int i = 0;
-
-	char *word;
-	FILE *file = fopen (filePath, "r");
-
-	printf("Im about to open a file");
-	if (file != NULL){
-		char line [MAXLINE_LENGTH];
-		char *word;
-
-		while ((i < [words count]) && (!foundNoun)){
-			NSString *wordAtIndex = [words objectAtIndex: i];
-			word = [wordAtIndex UTF8String];
-
-			while (fgets (line, sizeof line, file) != NULL) {
-				NSString *string = [NSString stringWithUTF8String: line];
-				
-				if (containsWord(word, string)){
-					seenBefore = true;
-					if (containsWord(NOUN_LABEL, string)){
-						foundNoun = true;
-					}
-				}
-			}
-			/*
-			 * If the word was not found in file of English tags,
-			 * then assume the word is a noun not yet encountered
-			 */
-			if (!foundNoun && !seenBefore){
-				// Force to be true to break while loop
-				foundNoun = true;		 
-			}
-			i++;
-		}
+    /* Remove trailing newline, if there is one. */
+	if ((strlen(inputFromUser) > 0) && (inputFromUser [strlen (inputFromUser) - 1] == '\n')) {
+		inputFromUser[strlen (inputFromUser) - 1] = '\0';
 	}
-	// In case there was an issue, let us know why
-	else {
-		perror (filePath);
-	}
-	fclose (file);
-
-
-	return word;
+	return [NSString stringWithUTF8String: inputFromUser];
 }
 
++(NSString *)findNoun:(NSString *)input usingFile:(NSString *)filePath {
+
+	NSArray *wordsAndEmptyStrings = [input componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+	NSArray *words = [wordsAndEmptyStrings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"length > 0"]];
+	
+	NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
+	NSArray *fileLines = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+	
+	NSUInteger countWord = 0;
+	BOOL foundNoun = NO;
+	NSString *ret;
+	while ((countWord < [words count]) && !foundNoun) {
+		
+		NSString *word = [words objectAtIndex:countWord];
+		NSUInteger countLine = 0;
+		BOOL foundWord = NO;
+		while ((countLine < [fileLines count]) && !foundWord) {
+			// Trim the line so that new lines are not used in comparisons
+			NSString *lineWithoutSpace = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+			if ([word isEqualToString:lineWithoutSpace]) {
+				foundWord = YES;
+			}
+			countLine++;
+		}
+		// loop didn't find the word and so we call this word a noun
+		if(!foundWord) {
+			foundNoun = YES;
+			ret = [words objectAtIndex:countWord];
+		}	
+		countWord++;
+	}
+	return ret;
+}
+
+@end
 
 /**
  * Returns yes if the given string contains a match for the regular expression,
@@ -167,23 +160,19 @@ double conditionalFrequency (char *filePath, char *head, char *prep,
  */
 int main (int argc, const char *argv []) {
 
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool
 
-	printf("\nWelcome to the first MadlyAmbiguous demo!\n");
-	printf("\nComplete the following sentence...\n");
-	printf("\nI ate spaghetti with ");
-		
-	char inputFromUser [MAXSTRING_LENGTH];
-	fgets(inputFromUser, MAXSTRING_LENGTH, stdin);
-
-    	/* Remove trailing newline, if there. */
-	if ((strlen(inputFromUser)>0) && (inputFromUser[strlen (inputFromUser) - 1] == '\n')){
-		inputFromUser[strlen (inputFromUser) - 1] = '\0';
-	}
-
-
+	NSLog(@"\nWelcome to the first MadlyAmbiguous demo!\n");
+	NSLog(@"\nComplete the following sentence...\n");
+	NSLog(@"\nI ate spaghetti with ");
+	
+	// Call helper function to get an NSString of the user input
+	
+	NSString *userInput = [MadHelper getInputFromUser];
+	
+/*
 	//Find noun
-	char * noun = findNoun (inputFromUser, ENG_COMMON_PATH);
+	NSString *noun = [MadHelper findNoun:userInput usingFile:@ENG_COMMON_PATH];
 
 	double ateFrequency = conditionalFrequency(ARCS_PATH, HEAD_ATE, 
 		PREP_TAG, noun);
@@ -211,6 +200,7 @@ int main (int argc, const char *argv []) {
 			printf("\nThe spaghetti with %s is what I ate, which of course means the spaghetti dish had %s in it!", inputFromUser, inputFromUser);
 		}
 	}
-	[pool drain];
+	
+*/
 	return 0;
 }

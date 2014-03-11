@@ -16,11 +16,10 @@
 
 #define ARCS_PATH "/home/hill1303/MadlyAmbiguous/src/main/resources/AteSpaghettiArcs"
 #define ENG_COMMON_PATH "/home/hill1303/MadlyAmbiguous/src/main/resources/CommonEnglish"
-
 #define PREP_TAG " with/"
 #define ATE_WITH_REGEX "^\\bate\\b\\s.+\\s\\bwith\\b/.+"
 #define PRE_REGEX "\\s\\b"
-#define POST_REGEX "\\b/.+$)"
+#define POST_REGEX "\\b/.+$"
 #define SPAG_WITH_REGEX "^\\bspaghetti\\b\\s.+\\s\\bwith\\b/.+"
 
 #define HEADS 1
@@ -34,7 +33,7 @@
 +(NSString *)getInputFromUser;
 +(NSString *)findNoun:(NSString *)input usingFile:(NSString *)filePath;
 +(double)conditionalPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath;
-+(NSUInteger)lineFrequency:(NSString *)line;
++(NSUInteger)lineFrequencyPPA:(NSString *)line;
 @end
 
 
@@ -98,7 +97,7 @@
 	return ret;
 }
 
-+(NSUInteger)lineFrequency:(NSString *)line {
++(NSUInteger)lineFrequencyPPA:(NSString *)line {
 	
 	NSRange range = [line rangeOfString:@"\t" options:NSBackwardsSearch];
 	NSString *frequencyString = [line substringFromIndex:range.location];
@@ -120,7 +119,7 @@
 	NSUInteger givenTotal = 0;
 	for (NSTextCheckingResult* match in matchesGiven) {
 		NSString* matchText = [fileContents substringWithRange:[match range]];
-		givenTotal += [MadHelper lineFrequency:matchText];
+		givenTotal += [MadHelper lineFrequencyPPA:matchText];
 	
 	}
 
@@ -131,13 +130,9 @@
 	NSUInteger nounTotal = 0;
 	for (NSTextCheckingResult* match in nounMatches) {
 		NSString* matchText = [fileContents substringWithRange:[match range]];
-		nounTotal += [MadHelper lineFrequency:matchText];
+		nounTotal += [MadHelper lineFrequencyPPA:matchText];
 	
 	}
-
-	NSLog(pattern);
-	NSLog(@"given %lu", givenTotal);
-	NSLog(@"noun %lu", nounTotal);
 
 	return ((double) nounTotal)/((double) givenTotal);
 }
@@ -155,41 +150,38 @@ int main (int argc, const char *argv []) {
 
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 
-	NSLog(@"\nWelcome to the first MadlyAmbiguous demo!\n");
-	NSLog(@"\nComplete the following sentence...\n");
-	NSLog(@"\nI ate spaghetti with ");
+	NSLog(@"Welcome to the first MadlyAmbiguous demo!");
+	NSLog(@"Complete the following sentence...\n");
+	NSLog(@"I ate spaghetti with \b\b");
 	
 	NSString *userInput = [MadHelper getInputFromUser];
 	
 	//Find noun
 	NSString *noun = [MadHelper findNoun:userInput usingFile:@ENG_COMMON_PATH];
 	[MadHelper conditionalPPAFrequency:noun givenRegex:@ATE_WITH_REGEX usingFile:@ARCS_PATH];
-	
-	
-	
 
 	double ateFrequency = [MadHelper conditionalPPAFrequency:noun givenRegex:@ATE_WITH_REGEX usingFile:@ARCS_PATH];
 	double spagFrequency = [MadHelper conditionalPPAFrequency:noun givenRegex:@SPAG_WITH_REGEX usingFile:@ARCS_PATH];
 
 	if (ateFrequency > spagFrequency){
-		NSLog(@"\nWith %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!", userInput, userInput);
-		NSLog(@"\n%f\n", ateFrequency);
+		NSLog(@"With %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!", userInput, userInput);
+		NSLog(@"Ate with Freq: %f", ateFrequency);
 	}
 	else if (ateFrequency < spagFrequency){
-		NSLog(@"\nThe spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!", userInput, noun);
-		NSLog(@"\n%f\n", spagFrequency);
+		NSLog(@"The spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!", userInput, noun);
+		NSLog(@"Spaghetti with Freq: %f", spagFrequency);
 	}
 	else {
-		NSLog(@"\nI don't really know... flipping a coin\n");
-		NSLog(@"\n%f\n", spagFrequency);
-		NSLog(@"\n%f\n", ateFrequency);
+		NSLog(@"I don't really know... flipping a coin");
+		NSLog(@"Spaghetti with Freq: %f", spagFrequency);
+		NSLog(@"Ate with Freq: %f", ateFrequency);
 
 		int coin = rand() % 2;
 		if (coin = HEADS){
-			NSLog(@"\nWith %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!", userInput, userInput);
+			NSLog(@"With %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!", userInput, userInput);
 		}
 		else {
-			NSLog(@"\nThe spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!", userInput, noun);
+			NSLog(@"The spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!", userInput, noun);
 		}
 	}
 	

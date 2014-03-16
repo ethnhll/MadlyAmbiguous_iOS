@@ -17,9 +17,9 @@ In our example sentence, I ate spaghetti with BLANK, the user can replace BLANK 
 
 http://commondatastorage.googleapis.com/books/syntactic-ngrams/index.html
 
-Our application then uses this file to calculate a conditional probability of a phrase entered by the user given either "spaghetti with" or "ate with." The phrase with the higher conditional probability is the attachment that is selected. 
+Our application then uses this file to sum the frequency of the noun appearing with either "spaghetti with" or "ate with." Whichever has the highest sum is the attachment that is chosen.
 
-A complication with this approach is that the user can enter more than just a single word, making the look-up of the phrase in the reduced N-Gram data much more complicated. To overcome this, we must determine what the head noun of the phrase entered by the user is. My approach was this: find a collection of *English's most common words** (links below) that are non-nouns and then, given input from the user, find the first word that is not found in this list and assume that it is the head-noun. This noun is then used to calculate conditional probabilities as before. Again, another complication arises in the case of compound but seperate nouns (for example the words book publisher or fire hydrant). It has been deemed best to ignore this case for now as it only complicates the solution unnecessarily given the scope of the application.
+A complication with this approach is that the user can enter more than just a single word, making the look-up of the phrase in the reduced N-Gram data much more complicated. To overcome this, we must determine what the head noun of the phrase entered by the user is. My approach was this: find a collection of *English's most common words** (links below) that are non-nouns and then, given input from the user, find the first word that is not found in this list and assume that it is the head-noun. This noun is then used as before by looking up the noun and summing its frequency with either "spaghetti with" or "ate wite." This creates a complication still in the presence of adjacent nouns (for example the words book publisher or fire hydrant). It has been deemed best to ignore this case for now as it only complicates the solution unnecessarily given the scope of the application.
 
 http://ucrel.lancs.ac.uk/bncfreq/lists/5_2_all_rank_verb.txt
 http://ucrel.lancs.ac.uk/bncfreq/lists/5_3_all_rank_adjective.txt
@@ -34,7 +34,7 @@ http://ucrel.lancs.ac.uk/bncfreq/lists/5_10_all_rank_interjection.txt
 
 ==================================
 
-Structural Ambiguity
+Coordination Ambiguity
 
 To illustrate this particular type of ambiguity, I chose the example sentence, "the pretty BLANK1 and BLANK2 were a sight to see," where BLANK's are replaced with nouns entered by the user. Here, our initial solution was to use a simple look-up of bigram data (link below) for "pretty BLANK1" and "pretty BLANK2" to see which bigram was more frequent. However, since Google N-Gram data is reflective of language use and not necssarily what is correct, simply selecting the more frequent bigram to resolve the ambiguity does not always result in the correct disambiguation. To overcome this, we introduce a scaling cutoff, where, if the greater conditional probability is less than 10 times greater than the lesser probability, the probabilities are to be considered equally likely. This then means that pretty attaches to both BLANK1 and BLANK2. Otherwise, pretty will attach to BLANK1.
 

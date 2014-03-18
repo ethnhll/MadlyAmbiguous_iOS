@@ -19,18 +19,9 @@ http://commondatastorage.googleapis.com/books/syntactic-ngrams/index.html
 
 Our application then uses this file to sum the frequency of the noun appearing with either "spaghetti with" or "ate with." Whichever has the highest sum is the attachment that is chosen.
 
-A complication with this approach is that the user can enter more than just a single word, making the look-up of the phrase in the reduced N-Gram data much more complicated. To overcome this, we must determine what the head noun of the phrase entered by the user is. My approach was this: find a collection of *English's most common words** (links below) that are non-nouns and then, given input from the user, find the first word that is not found in this list and assume that it is the head-noun. This noun is then used as before by looking up the noun and summing its frequency with either "spaghetti with" or "ate wite." This creates a complication still in the presence of adjacent nouns (for example the words book publisher or fire hydrant). It has been deemed best to ignore this case for now as it only complicates the solution unnecessarily given the scope of the application.
+A complication with this approach is that the user can enter more than just a single word, making the look-up of the phrase in the reduced N-Gram data much more complicated. To overcome this, we must determine what the head noun of the phrase entered by the user is. My approach was this: create a collection of English's most common words** (notes below) that are non-nouns and then, given input from the user, find the first word that is not found in this list and assume that it is the head-noun. This noun is then used as before by looking up the noun and summing its frequency with either "spaghetti with" or "ate wite." This creates a complication still in the presence of adjacent nouns (for example the words book publisher or fire hydrant). It has been deemed best to ignore this case for now as it only complicates the solution unnecessarily given the scope of the application.
 
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_2_all_rank_verb.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_3_all_rank_adjective.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_4_all_rank_adverb.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_6_all_rank_determ.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_7_all_rank_detpro.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_8_all_rank_preposition.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_9_all_rank_conjunction.txt
-http://ucrel.lancs.ac.uk/bncfreq/lists/5_10_all_rank_interjection.txt
-
-*it should be noted that these common words are from written British English, though the most common words should not differ too greatly from written American English. I also removed the frequency counts from the aggregate file of the most frequent words in order to save space (the frequencies are not used at all for your purposes).
+** I created a lookup tagger python script using python's nltk and the brown corpus to generate a list of words with their most frequent/most likely parts of speech tags and then reduced this list to only include non-noun tagged words.
 
 ==================================
 

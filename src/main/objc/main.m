@@ -32,7 +32,7 @@
 @interface MadHelper : NSObject
 +(NSString *)getInputFromUser;
 +(NSString *)findNoun:(NSString *)input usingFile:(NSString *)filePath;
-+(double)conditionalPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath;
++(NSUInteger)getPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath;
 +(NSUInteger)lineFrequencyPPA:(NSString *)line;
 @end
 
@@ -67,7 +67,7 @@
 	BOOL foundNoun = NO;
 	NSString *ret;
 	while ((countWord < [words count]) && !foundNoun) {
-		NSString *word = [words objectAtIndex:countWord];
+		NSString *word = [[words objectAtIndex:countWord] lowercaseString];
 		NSUInteger countLine = 0;
 		BOOL foundWord = NO;
 		while ((countLine < [fileLines count]) && !foundWord) {
@@ -105,36 +105,23 @@
 }
 
 
-+(double)conditionalPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath {
++(NSUInteger)getPPAFrequency:(NSString *)noun givenRegex:(NSString *)pattern usingFile:(NSString *)filePath {
 
 	NSString *fileContents = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
 	NSRange searchRange = NSMakeRange(0, [fileContents length]);
 	NSError *error = nil;
 	
-	NSRegularExpression* regexGiven = [NSRegularExpression regularExpressionWithPattern:pattern options:NSRegularExpressionAnchorsMatchLines error:&error];
-	NSArray *matchesGiven = [regexGiven matchesInString:fileContents options:0 range:searchRange];	
-	
-	
-
-	NSUInteger givenTotal = 0;
-	for (NSTextCheckingResult* match in matchesGiven) {
-		NSString* matchText = [fileContents substringWithRange:[match range]];
-		givenTotal += [MadHelper lineFrequencyPPA:matchText];
-	
-	}
-
 	NSString *nounPattern = [NSString stringWithFormat: @"%@%@%@%@",pattern ,@PRE_REGEX, noun, @POST_REGEX];
-	NSRegularExpression* regexNoun = [NSRegularExpression regularExpressionWithPattern:nounPattern options:NSRegularExpressionAnchorsMatchLines error:&error];
+	NSRegularExpression *regexNoun = [NSRegularExpression regularExpressionWithPattern:nounPattern options:NSRegularExpressionAnchorsMatchLines error:&error];
 	NSArray *nounMatches = [regexNoun matchesInString:fileContents options:0 range:searchRange];
 
 	NSUInteger nounTotal = 0;
-	for (NSTextCheckingResult* match in nounMatches) {
-		NSString* matchText = [fileContents substringWithRange:[match range]];
+	for (NSTextCheckingResult *match in nounMatches) {
+		NSString *matchText = [fileContents substringWithRange:[match range]];
 		nounTotal += [MadHelper lineFrequencyPPA:matchText];
 	
 	}
-
-	return ((double) nounTotal)/((double) givenTotal);
+	return nounTotal;
 }
 
 @end
@@ -158,23 +145,22 @@ int main (int argc, const char *argv []) {
 	
 	//Find noun
 	NSString *noun = [MadHelper findNoun:userInput usingFile:@ENG_COMMON_PATH];
-	[MadHelper conditionalPPAFrequency:noun givenRegex:@ATE_WITH_REGEX usingFile:@ARCS_PATH];
 
-	double ateFrequency = [MadHelper conditionalPPAFrequency:noun givenRegex:@ATE_WITH_REGEX usingFile:@ARCS_PATH];
-	double spagFrequency = [MadHelper conditionalPPAFrequency:noun givenRegex:@SPAG_WITH_REGEX usingFile:@ARCS_PATH];
+	NSUInteger ateFrequency = [MadHelper getPPAFrequency:noun givenRegex:@ATE_WITH_REGEX usingFile:@ARCS_PATH];
+	NSUInteger spagFrequency = [MadHelper getPPAFrequency:noun givenRegex:@SPAG_WITH_REGEX usingFile:@ARCS_PATH];
 
 	if (ateFrequency > spagFrequency){
 		NSLog(@"With %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!", userInput, userInput);
-		NSLog(@"Ate with Freq: %f", ateFrequency);
+		NSLog(@"Ate with Freq: %lu", ateFrequency);
 	}
 	else if (ateFrequency < spagFrequency){
 		NSLog(@"The spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!", userInput, noun);
-		NSLog(@"Spaghetti with Freq: %f", spagFrequency);
+		NSLog(@"Spaghetti with Freq: %lu", spagFrequency);
 	}
 	else {
 		NSLog(@"I don't really know... flipping a coin");
-		NSLog(@"Spaghetti with Freq: %f", spagFrequency);
-		NSLog(@"Ate with Freq: %f", ateFrequency);
+		NSLog(@"Spaghetti with Freq: %lu", spagFrequency);
+		NSLog(@"Ate with Freq: %lu", ateFrequency);
 
 		int coin = rand() % 2;
 		if (coin = HEADS){
@@ -184,7 +170,6 @@ int main (int argc, const char *argv []) {
 			NSLog(@"The spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!", userInput, noun);
 		}
 	}
-	
-[pool drain];
+	[pool drain];
 	return 0;
 }

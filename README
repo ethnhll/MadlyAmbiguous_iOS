@@ -27,12 +27,12 @@ A complication with this approach is that the user can enter more than just a si
 
 Coordination Ambiguity
 
-To illustrate this particular type of ambiguity, I chose the example sentence, "the pretty BLANK1 and BLANK2 were a sight to see," where BLANK's are replaced with nouns entered by the user. Here, our initial solution was to use a simple look-up of bigram data (link below) for "pretty BLANK1" and "pretty BLANK2" to see which bigram was more frequent. However, since Google N-Gram data is reflective of language use and not necssarily what is correct, simply selecting the more frequent bigram to resolve the ambiguity does not always result in the correct disambiguation. To overcome this, we introduce a scaling cutoff, where, if the greater conditional probability is less than 10 times greater than the lesser probability, the probabilities are to be considered equally likely. This then means that pretty attaches to both BLANK1 and BLANK2. Otherwise, pretty will attach to BLANK1.
+To illustrate this particular type of ambiguity, I chose the example sentence, "the (ADJ) (NOUN1) and (NOUN2) made such a mess." Here, our initial solution was to use a simple look-up of bigram data (link below) for "(ADJ) (NOUN1)" and "(ADJ) (NOUN2)" to see which bigram was more frequent. However, since Google N-Gram data is reflective of language use and not necssarily what is correct, simply selecting the more frequent bigram to resolve the ambiguity does not always result in the correct disambiguation. To overcome this, we introduce a scaling cutoff, where, conditional probability of (ADJ) (NOUN2) is less than 10 times greater than (ADJ) (NOUN1), the attachments are to be considered equally likely.
+
+A complication with this approach is that the data set needed for arbitrary input of adjectives and nouns is far too large to store offline (any adjective appearing with ANY noun in the Google N-Gram). To overcome this we....
 
 http://storage.googleapis.com/books/ngrams/books/datasetsv2.html
 
-
-The Bigram data was simply grep'd for the word pretty while other extraneous information was cut away (such as non-words that were paired with pretty).
 
 
 

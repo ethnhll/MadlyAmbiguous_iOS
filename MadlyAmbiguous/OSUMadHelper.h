@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#define HEADS 1
 
 @interface OSUMadHelper : NSObject
 
 @property NSString *resultsMessage;
 @property NSUInteger wins;
 @property NSUInteger losses;
+
+//+(NSString *)findNounInString:(NSString *)inputString usingFileOfNonNouns:(NSString *)filePath;
+//+(NSUInteger)getPPAFrequency:(NSString *)noun givenRegexPattern:(NSString *)pattern usingArcFile:(NSString *)arcFilePath;
+
 
 @end

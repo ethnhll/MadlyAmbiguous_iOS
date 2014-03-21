@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D311D115-71FC-457E-A0D5-44504C6E2952</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MadlyAmbiguous</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>23D14280-2696-4145-B2FA-FB2A542F78CF</key>
+		<string>https://github.com/hill1303/MadlyAmbiguous.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MadlyAmbiguous.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>23D14280-2696-4145-B2FA-FB2A542F78CF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/hill1303/MadlyAmbiguous.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>23D14280-2696-4145-B2FA-FB2A542F78CF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>23D14280-2696-4145-B2FA-FB2A542F78CF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MadlyAmbiguous</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,39 @@
+MadlyAmbiguous
+==============
+
+Our goal is to create an iOS application that demonstrates the difficulty of disambiguating/paraphrasing language in an entertaining and simple to understand way. A particular challenge to this project is in establishing effective "off-line" methods of disambiguating arbitrary input from a user. This is not a trivial task as we are limited by hard drive space on the iPad and as such, we have limited the input a user may enter to specific examples that demonstrate classic ambiguities in English. 
+=================
+
+
+
+NOTES
+=================
+
+Attachment Ambiguity
+
+Prepositional Phrase Attachment
+
+In our example sentence, I ate spaghetti with BLANK, the user can replace BLANK with an arbitrary phrase. Our attempt then is to make use of Google Syntactic N-Gram data (link below, specifically the Arc data is being used). Using a simple bash script, each arc file is downloaded individually and then grep'd for the keyword combinations "spaghetti with" or "ate with" (obviously the combinations don't look like this but here they do for brevity) before being written to a reduced file ready for our purposes.
+
+http://commondatastorage.googleapis.com/books/syntactic-ngrams/index.html
+
+Our application then uses this file to sum the frequency of the noun appearing with either "spaghetti with" or "ate with." Whichever has the highest sum is the attachment that is chosen.
+
+A complication with this approach is that the user can enter more than just a single word, making the look-up of the phrase in the reduced N-Gram data much more complicated. To overcome this, we must determine what the head noun of the phrase entered by the user is. My approach was this: create a collection of English's most common words** (notes below) that are non-nouns and then, given input from the user, find the first word that is not found in this list and assume that it is the head-noun. This noun is then used as before by looking up the noun and summing its frequency with either "spaghetti with" or "ate wite." This creates a complication still in the presence of adjacent nouns (for example the words book publisher or fire hydrant). It has been deemed best to ignore this case for now as it only complicates the solution unnecessarily given the scope of the application.
+
+** I created a lookup tagger python script using python's nltk and the brown corpus to generate a list of words with their most frequent/most likely parts of speech tags and then reduced this list to only include non-noun tagged words.
+
+==================================
+
+Coordination Ambiguity
+
+To illustrate this particular type of ambiguity, I chose the example sentence, "the (ADJ) (NOUN1) and (NOUN2) made such a mess." Here, our initial solution was to use a simple look-up of bigram data (link below) for "(ADJ) (NOUN1)" and "(ADJ) (NOUN2)" to see which bigram was more frequent. However, since Google N-Gram data is reflective of language use and not necssarily what is correct, simply selecting the more frequent bigram to resolve the ambiguity does not always result in the correct disambiguation. To overcome this, we introduce a scaling cutoff, where, conditional probability of (ADJ) (NOUN2) is less than 10 times greater than (ADJ) (NOUN1), the attachments are to be considered equally likely.
+
+A complication with this approach is that the data set needed for arbitrary input of adjectives and nouns is far too large to store offline (any adjective appearing with ANY noun in the Google N-Gram). To overcome this we....
+
+http://storage.googleapis.com/books/ngrams/books/datasetsv2.html
+
+
+
+
+

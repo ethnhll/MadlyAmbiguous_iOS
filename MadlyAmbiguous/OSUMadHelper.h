@@ -11,12 +11,16 @@
 
 @interface OSUMadHelper : NSObject
 
-@property NSString *resultsMessage;
 @property NSUInteger wins;
 @property NSUInteger losses;
+@property NSMutableArray *considerations;
+@property NSString *exampleResult;
 
-//+(NSString *)findNounInString:(NSString *)inputString usingFileOfNonNouns:(NSString *)filePath;
-//+(NSUInteger)getPPAFrequency:(NSString *)noun givenRegexPattern:(NSString *)pattern usingArcFile:(NSString *)arcFilePath;
+-(id)init;
 
-
+-(NSString *)reportTotalScoreInString;
+-(NSString *)reportExampleResult;
+-(NSMutableArray *)reportListOfConsideratiins;
++(id)sharedMadHelper;
+-(void)ppaExampleUsingPhrase:(NSString *)phrase;
 @end

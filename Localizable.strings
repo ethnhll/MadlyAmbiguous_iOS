@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  MadlyAmbiguous
+
+  Created by Ethan Hill on 3/28/14.
+  Copyright (c) 2014 Ethan Hill. All rights reserved.
+*/
+
+// The following strings are for use with the PPA Example
+"HEAD_VERB_REGEX" = "^\\bate\\b\\s.+\\s\\bwith\\b/.+\\s\\b";
+"HEAD_NOUN_REGEX" = "^\\bspaghetti\\b\\s.+\\s\\bwith\\b/.+\\s\\b";
+
+"POST_PPA_REGEX" = "\\b/.+$";
+
+"VERB_ATTACH_PARAPHRASE" = "With %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!";
+"NOUN_ATTACH_PARAPHRASE" = "The spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!";

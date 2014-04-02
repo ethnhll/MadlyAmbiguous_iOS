@@ -21,7 +21,10 @@
 		F5104DFF18DA41FE009B7BB3 /* MadlyAmbiguousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5104DFE18DA41FE009B7BB3 /* MadlyAmbiguousTests.m */; };
 		F5104E0918DA421E009B7BB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5104E0818DA421E009B7BB3 /* Main.storyboard */; };
 		F5670AEA18DC1E2F003FE384 /* OSUMadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */; };
-		F5670AED18DC20B1003FE384 /* OSUSubmitUserInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5670AEC18DC20B1003FE384 /* OSUSubmitUserInputViewController.m */; };
+		F5872DAB18E558B8004399AA /* OSUUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAA18E558B8004399AA /* OSUUserViewController.m */; };
+		F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */; };
+		F5872DB418E5C223004399AA /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB318E5C223004399AA /* resources.bundle */; };
+		F5872DB818E5C9C7004399AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB718E5C9C7004399AA /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +57,12 @@
 		F5104E0818DA421E009B7BB3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUMadHelper.h; sourceTree = "<group>"; };
 		F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUMadHelper.m; sourceTree = "<group>"; };
-		F5670AEB18DC20B1003FE384 /* OSUSubmitUserInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUSubmitUserInputViewController.h; sourceTree = "<group>"; };
-		F5670AEC18DC20B1003FE384 /* OSUSubmitUserInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUSubmitUserInputViewController.m; sourceTree = "<group>"; };
+		F5872DA918E558B8004399AA /* OSUUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUUserViewController.h; sourceTree = "<group>"; };
+		F5872DAA18E558B8004399AA /* OSUUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUUserViewController.m; sourceTree = "<group>"; };
+		F5872DAC18E57637004399AA /* OSUConsiderationDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUConsiderationDataViewController.h; sourceTree = "<group>"; };
+		F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUConsiderationDataViewController.m; sourceTree = "<group>"; };
+		F5872DB318E5C223004399AA /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
+		F5872DB718E5C9C7004399AA /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +122,13 @@
 		F5104DDF18DA41FE009B7BB3 /* MadlyAmbiguous */ = {
 			isa = PBXGroup;
 			children = (
+				F5872DB718E5C9C7004399AA /* Localizable.strings */,
+				F5872DB318E5C223004399AA /* resources.bundle */,
 				F5104E0818DA421E009B7BB3 /* Main.storyboard */,
-				F5670AEB18DC20B1003FE384 /* OSUSubmitUserInputViewController.h */,
-				F5670AEC18DC20B1003FE384 /* OSUSubmitUserInputViewController.m */,
+				F5872DAC18E57637004399AA /* OSUConsiderationDataViewController.h */,
+				F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */,
+				F5872DA918E558B8004399AA /* OSUUserViewController.h */,
+				F5872DAA18E558B8004399AA /* OSUUserViewController.m */,
 				F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */,
 				F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */,
 				F5104DE818DA41FE009B7BB3 /* OSUAppDelegate.h */,
@@ -233,9 +244,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5872DB818E5C9C7004399AA /* Localizable.strings in Resources */,
 				F5104E0918DA421E009B7BB3 /* Main.storyboard in Resources */,
 				F5104DE418DA41FE009B7BB3 /* InfoPlist.strings in Resources */,
 				F5104DEC18DA41FE009B7BB3 /* Images.xcassets in Resources */,
+				F5872DB418E5C223004399AA /* resources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,10 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */,
 				F5104DEA18DA41FE009B7BB3 /* OSUAppDelegate.m in Sources */,
 				F5104DE618DA41FE009B7BB3 /* main.m in Sources */,
-				F5670AED18DC20B1003FE384 /* OSUSubmitUserInputViewController.m in Sources */,
 				F5670AEA18DC1E2F003FE384 /* OSUMadHelper.m in Sources */,
+				F5872DAB18E558B8004399AA /* OSUUserViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

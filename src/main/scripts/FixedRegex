@@ -1,0 +1,3 @@
+^.+\s\bbearded\b/JJ.+$
+^\bmen\b\s+.+$
+^\bwomen\b\s+.+$

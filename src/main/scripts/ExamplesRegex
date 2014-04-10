@@ -1,0 +1,2 @@
+^\bate\b\s+\bate\b/.+\s\bwith\b/.+\s\b[A-Za-z]+\b/.+$
+^\bspaghetti\b\s+\bspaghetti\b/.+\s\bwith\b/.+\s\b[A-Za-z]+\b/.+$

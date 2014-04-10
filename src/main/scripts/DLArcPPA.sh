@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # constants and globals
-urlPart1="http://commondatastorage.googleapis.com/books/syntactic-ngrams/eng/nodes."
-urlPiece="nodes."
+urlPart1="http://commondatastorage.googleapis.com/books/syntactic-ngrams/eng/arcs."
+urlPiece="arcs."
 urlPart2="-of-99.gz"
-localDir="/home/hill1303/Ngrams/"
-output="EnglishTags_1000"
-grepListFile="/home/hill1303/English1000_Regex"
+localDir="$HOME/PPA_Example/"
+grepFile="$HOME/PPA_Example/ExamplesRegex"
+output="PPA_Example_Arcs"
 
 #
 # Builds, verifies, and downloads a file from a link
@@ -39,10 +39,12 @@ function reduceFile {
 	inputFile=$1
 	outputFile=$2
 	
-	# Greps for keywords from a list
-	zgrep -f ${grepListFile} ${inputFile}| awk 'match($0, "[^,]*"){print substr($0,RSTART,RLENGTH-5)}' >> ${outputFile}	
+	# Greps for keywords, then substrings from start to the "\tYEAR," (exclusive)
+	zgrep -f ${grepFile} -E ${inputFile} | awk 'match($0, "[^,]*"){print substr($0,RSTART,RLENGTH-5)}' >> ${outputFile}	
 }
 
+#Create a folder for the files to be dumped
+mkdir -p ${localDir}
 #Create an output file
 > ${localDir}${output}
 tens=0

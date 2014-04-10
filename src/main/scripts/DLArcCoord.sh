@@ -1,17 +1,19 @@
 #!/bin/bash
 
-# This is for use on hillet's stdlinux account at CSE OSU
-
-
 # constants and globals
 urlPart1="http://commondatastorage.googleapis.com/books/syntactic-ngrams/eng/arcs."
 urlPiece="arcs."
 urlPart2="-of-99.gz"
-adjectiveList="AdjectiveList"
-tempFile="tempFile"
-localDir="/home/hill1303/"
-output="AdjNounArcs"
-finalRegex="^\b[A-Za-z]+\b\s+\b[A-Za-z]+\b/JJ.*/amod/.+\s\b[A-Za-z]+\b/NN.*/.+$"
+localDir="$HOME/Coord_Example/"
+pythonScript="CountNouns.py"
+#grepForAdjNouns="^\b[A-Za-z]+\b\s+\b[A-Za-z]+\b/JJ.*/amod/.+\s\b[A-Za-z]+\b/NN.*/.+$"
+grepFile="$HOME/Coord_Example/NounRegex"
+output="Coord_Example_Adj_Nouns"
+countsFile="Coord_Example_Noun_Counts"
+
+# New Files for Fixed Adj and Fixed Noun
+fixedRegex="FixedRegex"
+fixedOutput="Coord_Example_Fixed"
 
 #
 # Builds, verifies, and downloads a file from a link
@@ -44,16 +46,15 @@ function reduceFile {
 	inputFile=$1
 	outputFile=$2
 	
-	# Greps for adjectives, then substrings from start to the "\tYEAR," (exclusive)
-	> ${localDir}${tempFile}
-	zgrep -f ${localDir}${adjectiveList} -F ${inputFile} | awk 'match($0, "[^,]*"){print substr($0,RSTART,RLENGTH-5)}' >> ${localDir}${tempFile}
-	grep -E ${finalRegex} ${localDir}${tempFile} >> ${outputFile}
-	echo "Done.\nRemoving temp file to save space..."
-	rm ${localDir}${tempFile}
+	# Greps for keywords, then substrings from start to the "\tYEAR," (exclusive)
+	zgrep -f ${grepFile} -E ${inputFile} | awk 'match($0, "[^,]*"){print substr($0,RSTART,RLENGTH-5)}' >> ${outputFile}
 }
 
+#Create a folder for the files to be dumped
+mkdir -p ${localDir}
 #Create an output file
 > ${localDir}${output}
+> ${localDir}${fixedOutput}
 tens=0
 ones=0
 # This segment builds the value ranges for the files
@@ -72,3 +73,11 @@ while [ $tens -lt 10 ]; do
 		tens=$((tens+1))
 	fi
 done
+
+echo "Counting up nouns..."
+# Note here that output is referring to the output of the grep/wgetting, not the output of the python script
+python ${localDir}${pythonScript} ${localDir}${output} ${localDir}${countsFile}
+grep -f ${localDir}${fixedRegex} -E ${localDir}${output} >> ${localDir}${fixedOutput}
+
+#echo "Cleaning up temp files..."
+#rm ${localDir}${output}

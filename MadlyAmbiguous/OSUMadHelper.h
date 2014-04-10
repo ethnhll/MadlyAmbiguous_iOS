@@ -23,4 +23,9 @@
 -(NSMutableArray *)reportListOfConsideratiins;
 +(id)sharedMadHelper;
 -(void)ppaExampleUsingPhrase:(NSString *)phrase;
+-(void)coordExampleUsingAdjNouns:(NSString *)adjective leftNoun:(NSString *)leftNoun rightNoun:(NSString *)rightNoun;
+-(void)incrementWins;
+-(void)incrementLosses;
+-(NSUInteger)getWins;
+-(NSUInteger)getLosses;
 @end

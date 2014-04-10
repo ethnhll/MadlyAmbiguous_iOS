@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Ethan Hill. All rights reserved.
 //
 
-#import "OSUUserViewController.h"
+#import "OSUUserPPAViewController.h"
 #import "OSUConsiderationDataViewController.h"
 #import "OSUMadHelper.h"
 
-@interface OSUUserViewController ()
+@interface OSUUserPPAViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @end
 
-@implementation OSUUserViewController
+@implementation OSUUserPPAViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

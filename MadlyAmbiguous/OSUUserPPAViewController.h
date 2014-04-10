@@ -7,6 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface OSUUserViewController : UIViewController
+@interface OSUUserPPAViewController : UIViewController
 
 @end

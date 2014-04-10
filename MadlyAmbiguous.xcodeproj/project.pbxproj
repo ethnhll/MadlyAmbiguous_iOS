@@ -20,8 +20,11 @@
 		F5104DFD18DA41FE009B7BB3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5104DFB18DA41FE009B7BB3 /* InfoPlist.strings */; };
 		F5104DFF18DA41FE009B7BB3 /* MadlyAmbiguousTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5104DFE18DA41FE009B7BB3 /* MadlyAmbiguousTests.m */; };
 		F5104E0918DA421E009B7BB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F5104E0818DA421E009B7BB3 /* Main.storyboard */; };
+		F51FEC1218EEA1B8000E3529 /* OSUUserCoordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51FEC1118EEA1B8000E3529 /* OSUUserCoordViewController.m */; };
+		F51FEC1518EEA6A3000E3529 /* OSUResultsDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */; };
+		F51FEC1818EEB05B000E3529 /* OSUWinLoseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */; };
 		F5670AEA18DC1E2F003FE384 /* OSUMadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */; };
-		F5872DAB18E558B8004399AA /* OSUUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAA18E558B8004399AA /* OSUUserViewController.m */; };
+		F5872DAB18E558B8004399AA /* OSUUserPPAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAA18E558B8004399AA /* OSUUserPPAViewController.m */; };
 		F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */; };
 		F5872DB418E5C223004399AA /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB318E5C223004399AA /* resources.bundle */; };
 		F5872DB818E5C9C7004399AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB718E5C9C7004399AA /* Localizable.strings */; };
@@ -55,10 +58,16 @@
 		F5104DFC18DA41FE009B7BB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F5104DFE18DA41FE009B7BB3 /* MadlyAmbiguousTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MadlyAmbiguousTests.m; sourceTree = "<group>"; };
 		F5104E0818DA421E009B7BB3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F51FEC1018EEA1B8000E3529 /* OSUUserCoordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUUserCoordViewController.h; sourceTree = "<group>"; };
+		F51FEC1118EEA1B8000E3529 /* OSUUserCoordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUUserCoordViewController.m; sourceTree = "<group>"; };
+		F51FEC1318EEA6A3000E3529 /* OSUResultsDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUResultsDisplayViewController.h; sourceTree = "<group>"; };
+		F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUResultsDisplayViewController.m; sourceTree = "<group>"; };
+		F51FEC1618EEB05A000E3529 /* OSUWinLoseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUWinLoseViewController.h; sourceTree = "<group>"; };
+		F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUWinLoseViewController.m; sourceTree = "<group>"; };
 		F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUMadHelper.h; sourceTree = "<group>"; };
 		F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUMadHelper.m; sourceTree = "<group>"; };
-		F5872DA918E558B8004399AA /* OSUUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUUserViewController.h; sourceTree = "<group>"; };
-		F5872DAA18E558B8004399AA /* OSUUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUUserViewController.m; sourceTree = "<group>"; };
+		F5872DA918E558B8004399AA /* OSUUserPPAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUUserPPAViewController.h; sourceTree = "<group>"; };
+		F5872DAA18E558B8004399AA /* OSUUserPPAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUUserPPAViewController.m; sourceTree = "<group>"; };
 		F5872DAC18E57637004399AA /* OSUConsiderationDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUConsiderationDataViewController.h; sourceTree = "<group>"; };
 		F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUConsiderationDataViewController.m; sourceTree = "<group>"; };
 		F5872DB318E5C223004399AA /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
@@ -125,10 +134,16 @@
 				F5872DB718E5C9C7004399AA /* Localizable.strings */,
 				F5872DB318E5C223004399AA /* resources.bundle */,
 				F5104E0818DA421E009B7BB3 /* Main.storyboard */,
+				F51FEC1618EEB05A000E3529 /* OSUWinLoseViewController.h */,
+				F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */,
+				F51FEC1318EEA6A3000E3529 /* OSUResultsDisplayViewController.h */,
+				F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */,
+				F51FEC1018EEA1B8000E3529 /* OSUUserCoordViewController.h */,
+				F51FEC1118EEA1B8000E3529 /* OSUUserCoordViewController.m */,
 				F5872DAC18E57637004399AA /* OSUConsiderationDataViewController.h */,
 				F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */,
-				F5872DA918E558B8004399AA /* OSUUserViewController.h */,
-				F5872DAA18E558B8004399AA /* OSUUserViewController.m */,
+				F5872DA918E558B8004399AA /* OSUUserPPAViewController.h */,
+				F5872DAA18E558B8004399AA /* OSUUserPPAViewController.m */,
 				F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */,
 				F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */,
 				F5104DE818DA41FE009B7BB3 /* OSUAppDelegate.h */,
@@ -216,6 +231,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Ethan Hill";
 				TargetAttributes = {
+					F5104DD518DA41FE009B7BB3 = {
+						DevelopmentTeam = B4U4UU38ED;
+					};
 					F5104DF018DA41FE009B7BB3 = {
 						TestTargetID = F5104DD518DA41FE009B7BB3;
 					};
@@ -270,8 +288,11 @@
 				F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */,
 				F5104DEA18DA41FE009B7BB3 /* OSUAppDelegate.m in Sources */,
 				F5104DE618DA41FE009B7BB3 /* main.m in Sources */,
+				F51FEC1218EEA1B8000E3529 /* OSUUserCoordViewController.m in Sources */,
+				F51FEC1518EEA6A3000E3529 /* OSUResultsDisplayViewController.m in Sources */,
+				F51FEC1818EEB05B000E3529 /* OSUWinLoseViewController.m in Sources */,
 				F5670AEA18DC1E2F003FE384 /* OSUMadHelper.m in Sources */,
-				F5872DAB18E558B8004399AA /* OSUUserViewController.m in Sources */,
+				F5872DAB18E558B8004399AA /* OSUUserPPAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,10 +413,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MadlyAmbiguous/MadlyAmbiguous-Prefix.pch";
 				INFOPLIST_FILE = "MadlyAmbiguous/MadlyAmbiguous-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
@@ -406,10 +430,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MadlyAmbiguous/MadlyAmbiguous-Prefix.pch";
 				INFOPLIST_FILE = "MadlyAmbiguous/MadlyAmbiguous-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

@@ -7,11 +7,10 @@
 //
 
 #import "OSUConsiderationDataViewController.h"
-
+#import "OSUResultsDisplayViewController.h"
 @interface OSUConsiderationDataViewController ()
-@property (weak, nonatomic) IBOutlet UITextView *exampleResult;
-
-
+@property (weak, nonatomic) IBOutlet UITextView *considerationLeft;
+@property (weak, nonatomic) IBOutlet UITextView *considerationRight;
 @end
 
 @implementation OSUConsiderationDataViewController
@@ -29,13 +28,19 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view
-    self.exampleResult.text = [self.helper reportExampleResult];
+    self.considerationLeft.text = [[self.helper reportListOfConsideratiins] objectAtIndex:0];
+    self.considerationRight.text = [[self.helper reportListOfConsideratiins] objectAtIndex:1];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        OSUResultsDisplayViewController *resultsView = segue.destinationViewController;
+        resultsView.helper = self.helper;
 }
 
 @end

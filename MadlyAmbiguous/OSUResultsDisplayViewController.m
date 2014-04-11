@@ -7,7 +7,7 @@
 //
 
 #import "OSUResultsDisplayViewController.h"
-
+#import "OSUWinLoseViewController.h"
 @interface OSUResultsDisplayViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *resultBox;
 
@@ -37,7 +37,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)buttonPressed:(id)button {
+- (IBAction)buttonPressed:(UIButton *)sender {
+        [self performSegueWithIdentifier:@"ToScoreFromResults" sender:sender];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender{
+    OSUWinLoseViewController *winLoseView = segue.destinationViewController;
+    if (sender.tag == 1){
+        [self.helper incrementWins];
+        winLoseView.wasRight = YES;
+    }
+    else {
+        [self.helper incrementLosses];
+        winLoseView.wasRight = NO;
+    }
+    winLoseView.helper = self.helper;
 }
 
 

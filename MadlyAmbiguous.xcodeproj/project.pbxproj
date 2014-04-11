@@ -28,6 +28,7 @@
 		F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */; };
 		F5872DB418E5C223004399AA /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB318E5C223004399AA /* resources.bundle */; };
 		F5872DB818E5C9C7004399AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB718E5C9C7004399AA /* Localizable.strings */; };
+		F5933F7518F810EA007928AE /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5933F7418F810EA007928AE /* CMPopTipView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUConsiderationDataViewController.m; sourceTree = "<group>"; };
 		F5872DB318E5C223004399AA /* resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = resources.bundle; sourceTree = "<group>"; };
 		F5872DB718E5C9C7004399AA /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
+		F5933F7318F810EA007928AE /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
+		F5933F7418F810EA007928AE /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				F5872DB718E5C9C7004399AA /* Localizable.strings */,
+				F5933F7318F810EA007928AE /* CMPopTipView.h */,
+				F5933F7418F810EA007928AE /* CMPopTipView.m */,
 				F5872DB318E5C223004399AA /* resources.bundle */,
 				F5104E0818DA421E009B7BB3 /* Main.storyboard */,
 				F51FEC1618EEB05A000E3529 /* OSUWinLoseViewController.h */,
@@ -288,6 +293,7 @@
 				F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */,
 				F5104DEA18DA41FE009B7BB3 /* OSUAppDelegate.m in Sources */,
 				F5104DE618DA41FE009B7BB3 /* main.m in Sources */,
+				F5933F7518F810EA007928AE /* CMPopTipView.m in Sources */,
 				F51FEC1218EEA1B8000E3529 /* OSUUserCoordViewController.m in Sources */,
 				F51FEC1518EEA6A3000E3529 /* OSUResultsDisplayViewController.m in Sources */,
 				F51FEC1818EEB05B000E3529 /* OSUWinLoseViewController.m in Sources */,

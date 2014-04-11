@@ -9,7 +9,7 @@
 #import "OSUWinLoseViewController.h"
 
 @interface OSUWinLoseViewController ()
-
+@property (weak, nonatomic) IBOutlet UITextView *messageOutput;
 @end
 
 @implementation OSUWinLoseViewController
@@ -27,6 +27,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    if (self.wasRight){
+        self.messageOutput.text = [NSString stringWithFormat:NSLocalizedString(@"WAS_RIGHT", nil), [self.helper getWins], [self.helper getLosses]];
+    }
+    else {
+        self.messageOutput.text = [NSString stringWithFormat:NSLocalizedString(@"WAS_WRONG", nil), [self.helper getWins], [self.helper getLosses]];;
+    }
 }
 
 - (void)didReceiveMemoryWarning

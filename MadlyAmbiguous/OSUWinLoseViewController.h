@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "OSUMadHelper.h"
 @interface OSUWinLoseViewController : UIViewController
-
+@property OSUMadHelper *helper;
+@property BOOL wasRight;
 @end

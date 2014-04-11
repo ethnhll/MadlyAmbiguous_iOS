@@ -16,3 +16,7 @@
 
 "HEAD_NOUN_REGEX_COORD" = "^\\b%@\\b\\s.+$";
 "NOUN_ADJ_REGEX_COORD" = "^\\b%@\\b\\s+\\b%@\\b/JJ.*$";
+
+// For the Results display check
+"WAS_RIGHT" = "Awesome! Let's try again!\nMy score today is %lu correct, %lu wrong.";
+"WAS_WRONG" = "Oh no... Oh well, better luck next time.\nMy score today is %lu correct, %lu wrong.";

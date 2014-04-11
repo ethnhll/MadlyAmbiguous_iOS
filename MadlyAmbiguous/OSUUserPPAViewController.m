@@ -31,17 +31,24 @@
 	// Do any additional setup after loading the view.
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if (self.textField.text != nil){
+
         OSUConsiderationDataViewController *considerationView = segue.destinationViewController;
         OSUMadHelper *helper = [OSUMadHelper sharedMadHelper];
         NSString *userInputPhrase = self.textField.text;
         [helper ppaExampleUsingPhrase:userInputPhrase];
         considerationView.helper = helper;
+}
+
+-(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
+    if ([identifier isEqualToString:@"ToConsiderationFromPPA"]){
+        if([self.textField.text isEqualToString:@""]){
+            UIAlertView *notAllowed = [[UIAlertView alloc] initWithTitle:@"Alert" message:@"Please be sure to fill in the box with a phrase before continuing." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [notAllowed show];
+                return NO;
+        }
     }
-    else {
-        //show tool tip explaining that the text field must be filled...
-        
-    }
+    return YES;
+    
 }
 
 - (void)didReceiveMemoryWarning

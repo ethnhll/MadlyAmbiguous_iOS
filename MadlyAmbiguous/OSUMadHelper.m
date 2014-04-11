@@ -66,11 +66,11 @@
 
 +(double)conditionalFrequencyOfAdjNoun:(NSString *)adjective givenNoun:(NSString *)noun {
 	
-    NSString *nounCountsPath = [[NSBundle mainBundle] pathForResource:@"ALL_ADJ_NOUN_COUNTS" ofType:nil inDirectory:@"resources.bundle"];
-    NSString *fixedNounFixedAdjPath = [[NSBundle mainBundle] pathForResource:@"FIXED_NOUN_FIXED_ADJ" ofType:nil inDirectory:@"resources.bundle"];
+    NSString *nounCountsPath = [[NSBundle mainBundle] pathForResource:@"Coord_Example_Noun_Counts" ofType:nil inDirectory:@"resources.bundle"];
+    NSString *fixedNounFixedAdjPath = [[NSBundle mainBundle] pathForResource:@"Coord_Example_Fixed" ofType:nil inDirectory:@"resources.bundle"];
 	
 	NSString *nounPattern = [NSString stringWithFormat:(NSLocalizedString(@"HEAD_NOUN_REGEX_COORD", nil)), noun];
-	NSString *adjNounPattern = [NSString stringWithFormat:(NSLocalizedString(@"ADJ_NOUN_REGEX_COORD", nil)), noun, adjective];
+	NSString *adjNounPattern = [NSString stringWithFormat:(NSLocalizedString(@"NOUN_ADJ_REGEX_COORD", nil)), noun, adjective];
     
     NSUInteger nounTotal = [OSUMadHelper getFrequencyUsingRegex:nounPattern usingFile:nounCountsPath];
     NSUInteger adjNounTotal = [OSUMadHelper getFrequencyUsingRegex:adjNounPattern usingFile:fixedNounFixedAdjPath];
@@ -130,11 +130,11 @@
 }
 
 -(void)incrementWins {
-    self.wins++;
+    self.wins+=1;
 }
 
 -(void)incrementLosses {
-    self.losses++;
+    self.losses+=1;
 }
 
 -(NSUInteger)getWins {

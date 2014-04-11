@@ -17,8 +17,6 @@
 @property NSString *exampleResult;
 
 -(id)init;
-
--(NSString *)reportTotalScoreInString;
 -(NSString *)reportExampleResult;
 -(NSMutableArray *)reportListOfConsideratiins;
 +(id)sharedMadHelper;

@@ -6,10 +6,11 @@ urlPiece="arcs."
 urlPart2="-of-99.gz"
 localDir="$HOME/Coord_Example/"
 pythonScript="CountNouns.py"
-#grepForAdjNouns="^\b[A-Za-z]+\b\s+\b[A-Za-z]+\b/JJ.*/amod/.+\s\b[A-Za-z]+\b/NN.*/.+$"
+grepForAdjNouns="^\b[A-Za-z]+\b\s+\b[A-Za-z]+\b/JJ.*/amod/.+\s\b[A-Za-z]+\b/NN.*/.+$"
 grepFile="$HOME/Coord_Example/NounRegex"
 output="Coord_Example_Adj_Nouns"
 countsFile="Coord_Example_Noun_Counts"
+tempFile="temp"
 
 # New Files for Fixed Adj and Fixed Noun
 fixedRegex="FixedRegex"
@@ -47,7 +48,7 @@ function reduceFile {
 	outputFile=$2
 	
 	# Greps for keywords, then substrings from start to the "\tYEAR," (exclusive)
-	zgrep -f ${grepFile} -E ${inputFile} | awk 'match($0, "[^,]*"){print substr($0,RSTART,RLENGTH-5)}' >> ${outputFile}
+	zgrep -E ${grepForAdjNouns} ${inputFile} | awk 'match($0, "[^,]*"){print substr($0,RSTART,RLENGTH-5)}' >> ${outputFile}
 }
 
 #Create a folder for the files to be dumped
@@ -55,6 +56,7 @@ mkdir -p ${localDir}
 #Create an output file
 > ${localDir}${output}
 > ${localDir}${fixedOutput}
+> ${localDir}${tempFile}
 tens=0
 ones=0
 # This segment builds the value ranges for the files
@@ -63,7 +65,7 @@ while [ $tens -lt 10 ]; do
 	# Download the file
 	download ${urlPart1}${digits}${urlPart2} ${localDir}${urlPiece}${digits}${urlPart2}
 	# Apply grep rules
-	reduceFile ${localDir}${urlPiece}${digits}${urlPart2} ${localDir}${output}
+	reduceFile ${localDir}${urlPiece}${digits}${urlPart2} ${localDir}${tempFile}
 	# Remove the downloaded file to save space
 	echo "Removing original download to conserve space..."
 	rm ${localDir}${urlPiece}${digits}${urlPart2}
@@ -73,6 +75,8 @@ while [ $tens -lt 10 ]; do
 		tens=$((tens+1))
 	fi
 done
+
+grep -f ${grepFile} -E ${tempFile} >> ${output}
 
 echo "Counting up nouns..."
 # Note here that output is referring to the output of the grep/wgetting, not the output of the python script

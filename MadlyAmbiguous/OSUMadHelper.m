@@ -8,7 +8,6 @@
 
 #import "OSUMadHelper.h"
 
-
 @interface OSUMadHelper ()
 +(NSUInteger)lineFrequency:(NSString *)line;
 +(NSUInteger)getFrequencyUsingRegex:(NSString *)regexPattern usingFile:(NSString *)filePath;
@@ -16,14 +15,16 @@
 +(double)conditionalFrequencyOfAdjNoun:(NSString *)adjective givenNoun:(NSString *)noun;
 @end
 
-
 @implementation OSUMadHelper
 
-@synthesize wins;
-@synthesize losses;
+@synthesize dailyWins;
+@synthesize dailyLosses;
+@synthesize name;
+@synthesize sessionWins;
+@synthesize sessionLosses;
 @synthesize considerations;
+@synthesize choiceSentence;
 @synthesize exampleResult;
-
 
 -(id)init {
     self = [super init];
@@ -63,9 +64,8 @@
 	return nounTotal;
 }
 
-
 +(double)conditionalFrequencyOfAdjNoun:(NSString *)adjective givenNoun:(NSString *)noun {
-	
+    
     NSString *nounCountsPath = [[NSBundle mainBundle] pathForResource:@"Coord_Example_Noun_Counts" ofType:nil inDirectory:@"resources.bundle"];
     NSString *fixedNounFixedAdjPath = [[NSBundle mainBundle] pathForResource:@"Coord_Example_Fixed" ofType:nil inDirectory:@"resources.bundle"];
 	
@@ -79,6 +79,7 @@
     
     
 }
+
 
 +(NSString *)findNounInPhrase:(NSString *)phrase usingFile:(NSString *)filePath {
     // possibly deprecated in favor of NSLinguisticTagger
@@ -126,23 +127,31 @@
     // Create an english tagger
     //NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes: [NSLinguisticTagger availableTagSchemesForLanguage:@"en"] options:options];
     //[tagger setString:phrase];
-     
-}
-
--(void)incrementWins {
-    self.wins+=1;
-}
-
--(void)incrementLosses {
-    self.losses+=1;
-}
-
--(NSUInteger)getWins {
     
-    return self.wins;
 }
--(NSUInteger)getLosses {
-    return self.losses;
+-(void)incrementWins{
+    self.dailyWins++;
+    self.sessionWins++;
+}
+-(void)incrementLosses{
+    self.dailyLosses++;
+    self.sessionLosses++;
+}
+
+-(NSUInteger)getSessionWins{
+    return self.sessionWins;
+}
+
+-(NSUInteger)getSessionLosses {
+    return self.sessionLosses;
+}
+
+-(NSUInteger)getDailyWins{
+    return self.dailyWins;
+}
+
+-(NSUInteger)getDailyLosses {
+    return self.dailyLosses;
 }
 
 -(NSMutableArray *)reportListOfConsideratiins{
@@ -153,13 +162,16 @@
     
     return [self.exampleResult copy];
 }
+-(NSString *)getChoiceSentence {
+    return [self.choiceSentence copy];
+}
 
 -(void)ppaExampleUsingPhrase:(NSString *)phrase {
     
     // Fill in the considerations array
     self.considerations = [NSMutableArray arrayWithObjects:
-                           [NSString stringWithFormat:NSLocalizedString(@"VERB_ATTACH_PARAPHRASE", nil), phrase, phrase],
-                           [NSString stringWithFormat:NSLocalizedString(@"NOUN_ATTACH_PARAPHRASE", nil), phrase, phrase], nil];
+                           [NSString stringWithFormat:NSLocalizedString(@"VERB_ATTACH_PARAPHRASE", nil), phrase, self.name, phrase],
+                           [NSString stringWithFormat:NSLocalizedString(@"NOUN_ATTACH_PARAPHRASE", nil), phrase, self.name, phrase], nil];
     
     NSString *commonEngPath = [[NSBundle mainBundle] pathForResource:@"CommonEnglish" ofType:nil inDirectory:@"resources.bundle"];
     NSString *ppaArcs = [[NSBundle mainBundle] pathForResource:@"AteSpaghettiArcs" ofType:nil inDirectory:@"resources.bundle"];
@@ -172,20 +184,11 @@
     NSUInteger headVerbFrequency = [OSUMadHelper getFrequencyUsingRegex:verbPPNounPattern usingFile:ppaArcs];
     NSUInteger headNounFrequency = [OSUMadHelper getFrequencyUsingRegex:nounPPNounPattern usingFile:ppaArcs];
     
-    if (headVerbFrequency > headNounFrequency){
-        self.exampleResult = [NSString stringWithFormat:NSLocalizedString(@"VERB_ATTACH_PARAPHRASE", nil), phrase, phrase];
-    }
-    else if (headVerbFrequency < headNounFrequency){
-        self.exampleResult = [NSString stringWithFormat:NSLocalizedString(@"NOUN_ATTACH_PARAPHRASE", nil), phrase, phrase];
+    if (headVerbFrequency >= headNounFrequency){
+        self.exampleResult = [NSString stringWithFormat:NSLocalizedString(@"VERB_ATTACH_PARAPHRASE", nil), phrase, self.name, phrase];
     }
     else {
-        int coin = rand() % 2;
-        if (coin == 1){
-            self.exampleResult = [NSString stringWithFormat:NSLocalizedString(@"VERB_ATTACH_PARAPHRASE", nil), phrase, phrase];
-        }
-        else {
-            self.exampleResult = [NSString stringWithFormat:NSLocalizedString(@"NOUN_ATTACH_PARAPHRASE", nil), phrase, phrase];
-        }
+        self.exampleResult = [NSString stringWithFormat:NSLocalizedString(@"NOUN_ATTACH_PARAPHRASE", nil), phrase, self.name, phrase];
     }
 }
 
@@ -208,5 +211,13 @@
     
 }
 
+-(void)resetSession {
+    self.name = [[NSString alloc] init];
+    self.sessionLosses = 0;
+    self.sessionWins = 0;
+    self.considerations = [[NSMutableArray alloc] init];
+    self.exampleResult = [[NSString alloc] init];
+    self.choiceSentence = [[NSString alloc] init];
+}
 
 @end

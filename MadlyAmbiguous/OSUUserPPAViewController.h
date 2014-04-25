@@ -6,7 +6,8 @@
 //  Copyright (c) 2014 Ethan Hill. All rights reserved.
 //
 
+#import "OSUMadHelper.h"
 #import <UIKit/UIKit.h>
 @interface OSUUserPPAViewController : UIViewController
-
+@property OSUMadHelper *helper;
 @end

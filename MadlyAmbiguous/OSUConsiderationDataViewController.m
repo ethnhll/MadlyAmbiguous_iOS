@@ -8,11 +8,11 @@
 
 #import "OSUConsiderationDataViewController.h"
 #import "OSUResultsDisplayViewController.h"
-#import "CMPopTipView.h"
 @interface OSUConsiderationDataViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *considerationLeft;
 @property (weak, nonatomic) IBOutlet UITextView *considerationRight;
-@property (weak, nonatomic) IBOutlet CMPopTipView *topSpeechBubble;
+@property (weak, nonatomic) IBOutlet UITextView *introMessage;
+
 @end
 
 @implementation OSUConsiderationDataViewController
@@ -33,7 +33,15 @@
 	// Do any additional setup after loading the view
     self.considerationLeft.text = [[self.helper reportListOfConsideratiins] objectAtIndex:0];
     self.considerationRight.text = [[self.helper reportListOfConsideratiins] objectAtIndex:1];
+    [self.considerationLeft setFont:[UIFont systemFontOfSize:20]];
+    [self.considerationRight setFont:[UIFont systemFontOfSize:20]];
+    [self.considerationLeft setTextAlignment:NSTextAlignmentCenter];
+    [self.considerationRight setTextAlignment:NSTextAlignmentCenter];
     
+    
+    self.introMessage.text = [NSString stringWithFormat:NSLocalizedString(@"POSSIBILITIES_INTRO", nil), [self.helper getChoiceSentence]];
+    [self.introMessage setFont:[UIFont systemFontOfSize:25]];
+    [self.introMessage setTextAlignment:NSTextAlignmentCenter];
 }
 - (void)didReceiveMemoryWarning
 {

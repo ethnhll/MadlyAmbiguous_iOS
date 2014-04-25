@@ -12,6 +12,8 @@
 
 @interface OSUUserPPAViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIButton *doneButton;
+@property (weak, nonatomic) IBOutlet UITextView *phraseBeginTextView;
 @end
 
 @implementation OSUUserPPAViewController
@@ -29,16 +31,38 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.helper = [OSUMadHelper sharedMadHelper];
+    self.phraseBeginTextView.text = [NSString stringWithFormat:NSLocalizedString(@"PPA_BEGIN_DEFAULT", nil), self.helper.name];
+    [self.phraseBeginTextView setFont:[UIFont systemFontOfSize:20]];
+    [self.phraseBeginTextView setTextAlignment:NSTextAlignmentRight];
+    [self.doneButton setEnabled:FALSE];
+}
+- (IBAction)textEntered:(id)sender {
+    if ([self.textField.text isEqualToString:@""]){
+        [self.doneButton setEnabled:FALSE];
+    }
+    else {
+        [self.doneButton setEnabled:TRUE];
+    }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if([self.textField.text isEqualToString:@""]){
+        return NO;
+    }
+    else {
+        [self performSegueWithIdentifier:@"ToConsiderationFromPPA" sender:self];
+        return YES;
+    }
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
         OSUConsiderationDataViewController *considerationView = segue.destinationViewController;
-        OSUMadHelper *helper = [OSUMadHelper sharedMadHelper];
         NSString *userInputPhrase = self.textField.text;
-        [helper ppaExampleUsingPhrase:userInputPhrase];
-        considerationView.helper = helper;
+        [self.helper ppaExampleUsingPhrase:userInputPhrase];
+        self.helper.choiceSentence = [NSString stringWithFormat:@"%@ %@", self.phraseBeginTextView.text, userInputPhrase];
+        considerationView.helper = self.helper;
 }
-
 -(BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender {
     if ([identifier isEqualToString:@"ToConsiderationFromPPA"]){
         if([self.textField.text isEqualToString:@""]){
@@ -48,7 +72,6 @@
         }
     }
     return YES;
-    
 }
 
 - (void)didReceiveMemoryWarning

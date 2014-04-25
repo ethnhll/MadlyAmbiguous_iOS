@@ -8,15 +8,37 @@
 // The following strings are for use with the PPA Example
 "HEAD_VERB_REGEX_PPA" = "^\\bate\\b\\s.+\\s\\bwith\\b/.+\\s\\b%@\\b/.+$";
 "HEAD_NOUN_REGEX_PPA" = "^\\bspaghetti\\b\\s.+\\s\\bwith\\b/.+\\s\\b%@\\b/.+$";
-"VERB_ATTACH_PARAPHRASE" = "With %@ is how I ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!";
-"NOUN_ATTACH_PARAPHRASE" = "The spaghetti with %@ is what I ate, which of course means the spaghetti dish had %@ in it!";
+"VERB_ATTACH_PARAPHRASE" = "With %@ is how %@ ate the spaghetti, but of course the spaghetti dish didn't have %@ in it!";
+"NOUN_ATTACH_PARAPHRASE" = "The spaghetti with %@ is what %@ ate, which of course means the spaghetti dish had %@ in it!";
+"PPA_BEGIN_DEFAULT" = "%@ ate spaghetti with";
+
 // The following strings are for use with the Coordination Example
+"ADJ_DEFAULT" = "bearded";
+"LEFT_NOUN_DEFAULT" = "men";
+"RIGHT_NOUN_DEFAULT" = "women";
 "LEFT_NOUN_ADJ_RIGHT_NOUN_ATTACH_PARAPHRASE" = "The %@ and the %@ %@ made such a mess!";
 "ADJ_BOTH_NOUN_ATTACH_PARAPHRASE" = "Both the %@ %@ and the %@ %@ made such a mess!";
+"COORD_DEFAULT" = "The %@ %@ and %@ made such a mess!";
 
 "HEAD_NOUN_REGEX_COORD" = "^\\b%@\\b\\s.+$";
 "NOUN_ADJ_REGEX_COORD" = "^\\b%@\\b\\s+\\b%@\\b/JJ.*$";
 
 // For the Results display check
-"WAS_RIGHT" = "Awesome! Let's try again!\nMy score today is %lu correct, %lu wrong.";
-"WAS_WRONG" = "Oh no... Oh well, better luck next time.\nMy score today is %lu correct, %lu wrong.";
+"WAS_RIGHT" = "^_^\n\nAwesome! Let's try again!\nMy score today is %lu correct, %lu wrong.";
+"WAS_WRONG" = "-_-\n\nOh no... Oh well, better luck next time.\nMy score today is %lu correct, %lu wrong.";
+
+
+//Intro messages
+"INTRO_MESSAGE_1" = "Hello human!";
+"INTRO_MESSAGE_2" = "Did you know that sentences can have many different meanings?";
+"INTRO_MESSAGE_3" = "For a human like you, it is really easy to figure out the meaning of sentences";
+"INTRO_MESSAGE_4" = "But for a computer like me, it's really hard to figure things out.";
+"INTRO_MESSAGE_5" = "I do my best though! Let's try some examples together to see what I mean.";
+"INTRO_MESSAGE_6" = "But first, what's your name human?";
+
+//Considerations page
+"POSSIBILITIES_INTRO" = "Here are two possible meanings for the sentence, \"%@\"";
+
+//Results page
+"RESULTS_INTRO" = "Here is what I've come up with for the sentence, \"%@\"";
+"ASK_USER" = "What do you think %@? Did I get it right?";

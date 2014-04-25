@@ -16,21 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beu-NZ-qsG">
-                                <rect key="frame" x="374" y="397" width="175" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="(a phrase)." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="beu-NZ-qsG">
+                                <rect key="frame" x="429" y="398" width="175" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="textEntered:" destination="GwQ-Pa-kcr" eventType="editingChanged" id="Isa-La-7DG"/>
+                                    <outlet property="delegate" destination="GwQ-Pa-kcr" id="dzJ-Gr-Sea"/>
+                                </connections>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="I ate spaghetti with" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sQ3-kh-gYp">
-                                <rect key="frame" x="220" y="395" width="146" height="33"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="right" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQ3-kh-gYp">
+                                <rect key="frame" x="20" y="395" width="401" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bg-L7-xC4">
-                                <rect key="frame" x="332" y="509" width="104" height="69"/>
+                                <rect key="frame" x="332" y="567" width="104" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Done">
@@ -40,17 +44,27 @@
                                     <segue destination="hk8-fj-4nN" kind="push" identifier="ToConsiderationFromPPA" id="MPC-IV-g5Q"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yOh-C0-ZkR">
+                                <rect key="frame" x="187" y="160" width="395" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Just fill in the blank below with a phrase that completes the sentence and I'll try to see if I can figure out which meaning is the right one.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ag8-WN-6vc"/>
                     <connections>
+                        <outlet property="doneButton" destination="5bg-L7-xC4" id="WSZ-r7-e0Z"/>
+                        <outlet property="phraseBeginTextView" destination="sQ3-kh-gYp" id="ESG-IQ-4XE"/>
                         <outlet property="textField" destination="beu-NZ-qsG" id="djj-sH-Xym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ts2-px-Yl2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2998" y="-1369"/>
+            <point key="canvasLocation" x="3038" y="-1369"/>
         </scene>
         <!--User Coord View Controller-->
         <scene sceneID="bfR-kg-2Zm">
@@ -65,46 +79,61 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bearded" borderStyle="roundedRect" placeholder="(adjective)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LhU-RQ-2DH">
-                                <rect key="frame" x="146" y="409" width="97" height="30"/>
+                                <rect key="frame" x="121" y="409" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="doneEditing:" destination="IN2-rz-fHm" eventType="editingDidEnd" id="Uwa-2U-h7U"/>
+                                    <action selector="startedEditing:" destination="IN2-rz-fHm" eventType="editingDidBegin" id="EAk-UO-YcS"/>
+                                    <outlet property="delegate" destination="IN2-rz-fHm" id="99Z-hD-fxp"/>
+                                </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="men" borderStyle="roundedRect" placeholder="(noun)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmO-xq-EgA">
-                                <rect key="frame" x="251" y="409" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="men" borderStyle="roundedRect" placeholder="(noun)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nmO-xq-EgA">
+                                <rect key="frame" x="233" y="409" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="doneEditing:" destination="IN2-rz-fHm" eventType="editingDidEnd" id="RNi-d3-dCZ"/>
+                                    <action selector="startedEditing:" destination="IN2-rz-fHm" eventType="editingDidBegin" id="3Dl-RU-slh"/>
+                                    <outlet property="delegate" destination="IN2-rz-fHm" id="mx6-8R-x1y"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="The" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugL-VK-j3M">
-                                <rect key="frame" x="95" y="409" width="50" height="30"/>
+                                <rect key="frame" x="63" y="405" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="made such a mess!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99A-ao-khE">
-                                <rect key="frame" x="526" y="405" width="148" height="39"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="made such a mess!" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99A-ao-khE">
+                                <rect key="frame" x="501" y="405" width="204" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="and" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93j-Ph-mAh">
-                                <rect key="frame" x="356" y="409" width="57" height="31"/>
+                                <rect key="frame" x="338" y="405" width="57" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="women" borderStyle="roundedRect" placeholder="(noun)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTG-Bb-DLX">
-                                <rect key="frame" x="421" y="409" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="women" borderStyle="roundedRect" placeholder="(noun)" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UTG-Bb-DLX">
+                                <rect key="frame" x="396" y="410" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="doneEditing:" destination="IN2-rz-fHm" eventType="editingDidEnd" id="xba-1T-ceT"/>
+                                    <action selector="startedEditing:" destination="IN2-rz-fHm" eventType="editingDidBegin" id="4pl-Bl-JWr"/>
+                                    <outlet property="delegate" destination="IN2-rz-fHm" id="GrX-79-yat"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nco-W9-guG">
-                                <rect key="frame" x="322" y="602" width="124" height="78"/>
+                                <rect key="frame" x="312" y="513" width="124" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <state key="normal" title="Done">
@@ -114,19 +143,29 @@
                                     <segue destination="hk8-fj-4nN" kind="push" identifier="ToConsiderationFromCoord" id="eUO-Ip-636"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1UM-hb-ion">
+                                <rect key="frame" x="177" y="122" width="395" height="174"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Just fill in the blanks below with words that complete the sentence and I'll try to see if I can figure out which meaning is the right one.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="OSg-6R-Pxr"/>
                     <connections>
                         <outlet property="adjectiveField" destination="LhU-RQ-2DH" id="sBt-Ik-g25"/>
+                        <outlet property="doneButton" destination="nco-W9-guG" id="7zq-nc-sYg"/>
                         <outlet property="leftNounField" destination="nmO-xq-EgA" id="rpQ-f7-KPa"/>
+                        <outlet property="phraseEndTextView" destination="99A-ao-khE" id="2Qy-iq-BY7"/>
                         <outlet property="rightNounField" destination="UTG-Bb-DLX" id="dfn-Xd-7eI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3tz-A3-0qU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="283"/>
+            <point key="canvasLocation" x="3057" y="1307"/>
         </scene>
         <!--Consideration Data View Controller-->
         <scene sceneID="TXX-vY-lwe">
@@ -141,26 +180,26 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO6-Nr-OKT">
-                                <rect key="frame" x="264" y="415" width="240" height="128"/>
+                                <rect key="frame" x="89" y="522" width="608" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="Here are two possible meanings to the sentence you gave me." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-R6-ClC">
-                                <rect key="frame" x="221" y="32" width="352" height="114"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rS9-R6-ClC">
+                                <rect key="frame" x="159" y="94" width="488" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swi-Iw-swo">
-                                <rect key="frame" x="264" y="202" width="240" height="128"/>
+                                <rect key="frame" x="89" y="369" width="608" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUz-pD-bHE">
-                                <rect key="frame" x="267" y="852" width="235" height="49"/>
+                                <rect key="frame" x="267" y="899" width="235" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Continue">
@@ -171,10 +210,10 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="Now let me see if I can figure out which meaning is the right one." textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6s-FQ-uuQ">
-                                <rect key="frame" x="264" y="658" width="240" height="128"/>
+                                <rect key="frame" x="196" y="753" width="377" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -184,11 +223,12 @@
                     <connections>
                         <outlet property="considerationLeft" destination="SO6-Nr-OKT" id="3So-xg-gRi"/>
                         <outlet property="considerationRight" destination="swi-Iw-swo" id="nbO-GV-dPY"/>
+                        <outlet property="introMessage" destination="rS9-R6-ClC" id="A5M-8d-fPU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ax-3z-GdQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4165" y="-325"/>
+            <point key="canvasLocation" x="4877" y="-1661"/>
         </scene>
         <!--Results Display View Controller-->
         <scene sceneID="cUB-dr-ves">
@@ -203,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uqP-bv-qlm">
-                                <rect key="frame" x="97" y="762" width="168" height="84"/>
+                                <rect key="frame" x="97" y="789" width="168" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="Yes">
@@ -214,7 +254,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="npd-8y-NJS">
-                                <rect key="frame" x="512" y="760" width="166" height="88"/>
+                                <rect key="frame" x="505" y="789" width="166" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="No">
@@ -224,22 +264,22 @@
                                     <action selector="buttonPressed:" destination="v32-Qm-vHv" eventType="touchUpInside" id="gX2-mc-iIX"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="Here is what I've come up with. " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGF-Ph-0Kb">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGF-Ph-0Kb">
                                 <rect key="frame" x="183" y="186" width="403" height="199"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsn-J4-CDr">
                                 <rect key="frame" x="196" y="453" width="376" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="Did I get it right?" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sks-ka-Fyw">
-                                <rect key="frame" x="264" y="642" width="240" height="92"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sks-ka-Fyw">
+                                <rect key="frame" x="213" y="655" width="343" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
@@ -250,13 +290,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="jPs-mJ-YCa"/>
                     <connections>
+                        <outlet property="askUserField" destination="sks-ka-Fyw" id="U7b-Hw-IKX"/>
+                        <outlet property="messageBox" destination="jGF-Ph-0Kb" id="Ks0-b4-Ecn"/>
                         <outlet property="resultBox" destination="rsn-J4-CDr" id="frf-mT-W7r"/>
                         <segue destination="f8d-t9-RF2" kind="push" identifier="ToScoreFromResults" id="VET-W4-5Ri"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UoH-4P-5Mu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5115" y="-320"/>
+            <point key="canvasLocation" x="6331" y="-1672"/>
         </scene>
         <!--Win Lose View Controller-->
         <scene sceneID="9HL-pi-c9y">
@@ -271,10 +313,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56i-wl-a8u">
-                                <rect key="frame" x="205" y="186" width="359" height="206"/>
+                                <rect key="frame" x="105" y="161" width="558" height="332"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qNL-da-oZr">
@@ -303,7 +345,7 @@
                                 <rect key="frame" x="264" y="608" width="240" height="74"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -316,12 +358,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rX-Cm-jEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6093" y="-320"/>
+            <point key="canvasLocation" x="7629" y="-1672"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rFe-J1-iea">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="88y-PV-hhg" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="88y-PV-hhg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="dpm-BX-eQ7">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
@@ -334,7 +376,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3q-tv-vVO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-168" y="-525"/>
+            <point key="canvasLocation" x="-1990" y="-117"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="fMJ-Sl-HwO">
@@ -356,7 +398,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BX7-OZ-pUK" kind="push" id="WyV-M1-Hag"/>
+                                    <segue destination="29t-xD-9Sd" kind="push" id="w27-Wt-0ET"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" text="MADLY Ambiguous" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qb9-qK-YaV">
@@ -373,12 +415,71 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="41W-2t-KrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="795" y="-525"/>
+            <point key="canvasLocation" x="-721" y="-117"/>
         </scene>
-        <!--View Controller-->
+        <!--Intro View Controller-->
+        <scene sceneID="aY5-yh-3C0">
+            <objects>
+                <viewController id="29t-xD-9Sd" customClass="OSUIntroViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l5I-Je-36P"/>
+                        <viewControllerLayoutGuide type="bottom" id="QKo-W2-vvv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LJR-sc-hZX">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWa-uF-vAL">
+                                <rect key="frame" x="482" y="302" width="156" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BX7-OZ-pUK" kind="push" identifier="ToExamplesFromIntro" id="esG-hk-mqV"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mTk-GE-vzp">
+                                <rect key="frame" x="292" y="317" width="182" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="29t-xD-9Sd" id="Gdp-YM-5VQ"/>
+                                </connections>
+                            </textField>
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ipadCharacter.png" translatesAutoresizingMaskIntoConstraints="NO" id="YwC-Sb-AO5">
+                                <rect key="frame" x="177" y="415" width="415" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvw-tl-6JD">
+                                <rect key="frame" x="86" y="120" width="596" height="189"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Hello human! Did you know that sentences can have many different meanings? For a human like you, it is really easy to figure out the meaning of sentences. But for a computer like me, it's really hard to figure things out. I do my best though! Let's try some examples together to see what I mean. But first, what's your name human?</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="V2d-6K-L8H"/>
+                    <connections>
+                        <outlet property="characterImage" destination="YwC-Sb-AO5" id="E7v-rb-4Gc"/>
+                        <outlet property="doneButton" destination="TWa-uF-vAL" id="qPV-wT-7AD"/>
+                        <outlet property="tempSpeechBubble" destination="jvw-tl-6JD" id="U3E-CZ-cn5"/>
+                        <outlet property="textField" destination="mTk-GE-vzp" id="nHo-YK-T0q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Wn-7Q-93q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="501" y="-117"/>
+        </scene>
+        <!--Example Selection View Controller-->
         <scene sceneID="Ihk-JJ-LKK">
             <objects>
-                <viewController id="BX7-OZ-pUK" sceneMemberID="viewController">
+                <viewController id="BX7-OZ-pUK" customClass="OSUExampleSelectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1TA-cI-a9i"/>
                         <viewControllerLayoutGuide type="bottom" id="CYR-b3-Rca"/>
@@ -388,10 +489,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Avi-bK-bfN">
-                                <rect key="frame" x="275" y="191" width="219" height="138"/>
+                                <rect key="frame" x="63" y="650" width="229" height="138"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Spaghetti">
+                                <state key="normal" title="I ate spaghetti with...">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -399,16 +500,51 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBA-62-NVK">
-                                <rect key="frame" x="222" y="543" width="325" height="103"/>
+                                <rect key="frame" x="401" y="667" width="391" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Cats and dogs">
+                                <state key="normal" title="Bearded men and women...">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="IN2-rz-fHm" kind="push" id="r5p-fq-sRm"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="I ate spaghetti with the president." translatesAutoresizingMaskIntoConstraints="NO" id="EZL-O1-HrA">
+                                <rect key="frame" x="20" y="641" width="363" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="I ate spaghetti with a tasty sauce." translatesAutoresizingMaskIntoConstraints="NO" id="JIV-V1-2Tm">
+                                <rect key="frame" x="20" y="588" width="363" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Old men and women made a mess...." translatesAutoresizingMaskIntoConstraints="NO" id="ZeT-eB-c6a">
+                                <rect key="frame" x="405" y="641" width="363" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Barking dogs and cats made a mess..." translatesAutoresizingMaskIntoConstraints="NO" id="j7O-sZ-AqU">
+                                <rect key="frame" x="405" y="588" width="363" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" text="Pick an example (in blue) from below and we will explore how sentences might have different meanings. " textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ICw-FB-cxV">
+                                <rect key="frame" x="204" y="199" width="360" height="188"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -416,26 +552,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHi-K9-BGy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1767" y="-525"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="EP9-N3-Bze">
-            <objects>
-                <viewController id="mJ0-Sf-Uwu" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ydi-Gy-PoA"/>
-                        <viewControllerLayoutGuide type="bottom" id="u9v-ej-blk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="RAZ-7n-wjY">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HTw-vF-MOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="1823" y="-129"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ipadCharacter.png" width="381" height="402"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -443,7 +565,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="6XA-XR-Pwr"/>
-        <segue reference="eUO-Ip-636"/>
+        <segue reference="MPC-IV-g5Q"/>
         <segue reference="s6h-IB-h6B"/>
     </inferredMetricsTieBreakers>
 </document>

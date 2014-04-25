@@ -28,11 +28,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     if (self.wasRight){
-        self.messageOutput.text = [NSString stringWithFormat:NSLocalizedString(@"WAS_RIGHT", nil), [self.helper getWins], [self.helper getLosses]];
+        self.messageOutput.text = [NSString stringWithFormat:NSLocalizedString(@"WAS_RIGHT", nil), [self.helper getSessionWins], [self.helper getSessionLosses]];
     }
     else {
-        self.messageOutput.text = [NSString stringWithFormat:NSLocalizedString(@"WAS_WRONG", nil), [self.helper getWins], [self.helper getLosses]];;
+        self.messageOutput.text = [NSString stringWithFormat:NSLocalizedString(@"WAS_WRONG", nil), [self.helper getSessionWins], [self.helper getSessionLosses]];;
     }
+    [self.messageOutput setFont:[UIFont systemFontOfSize:30]];
+    [self.messageOutput setTextAlignment:NSTextAlignmentCenter];
 }
 
 - (void)didReceiveMemoryWarning

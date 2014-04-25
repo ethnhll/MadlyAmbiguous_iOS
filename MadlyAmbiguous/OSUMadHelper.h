@@ -11,10 +11,14 @@
 
 @interface OSUMadHelper : NSObject
 
-@property NSUInteger wins;
-@property NSUInteger losses;
+@property NSUInteger dailyWins;
+@property NSUInteger dailyLosses;
+@property NSUInteger sessionWins;
+@property NSUInteger sessionLosses;
 @property NSMutableArray *considerations;
 @property NSString *exampleResult;
+@property (nonatomic) NSString *name;
+@property NSString *choiceSentence;
 
 -(id)init;
 -(NSString *)reportExampleResult;
@@ -24,6 +28,11 @@
 -(void)coordExampleUsingAdjNouns:(NSString *)adjective leftNoun:(NSString *)leftNoun rightNoun:(NSString *)rightNoun;
 -(void)incrementWins;
 -(void)incrementLosses;
--(NSUInteger)getWins;
--(NSUInteger)getLosses;
+-(NSUInteger)getSessionWins;
+-(NSUInteger)getSessionLosses;
+-(NSUInteger)getDailyWins;
+-(NSUInteger)getDailyLosses;
+-(void)resetSession;
+-(NSString *)getChoiceSentence;
+
 @end

@@ -10,6 +10,8 @@
 #import "OSUWinLoseViewController.h"
 @interface OSUResultsDisplayViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *resultBox;
+@property (weak, nonatomic) IBOutlet UITextView *messageBox;
+@property (weak, nonatomic) IBOutlet UITextView *askUserField;
 
 @end
 
@@ -29,6 +31,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.resultBox.text = [self.helper reportExampleResult];
+    [self.resultBox setFont:[UIFont systemFontOfSize:20]];
+    [self.resultBox setTextAlignment:NSTextAlignmentCenter];
+    
+    self.messageBox.text = [NSString stringWithFormat:NSLocalizedString(@"RESULTS_INTRO", nil), self.helper.choiceSentence];
+    
+    [self.messageBox setFont:[UIFont systemFontOfSize:25]];
+    [self.messageBox setTextAlignment:NSTextAlignmentCenter];
+    
+    self.askUserField.text = [NSString stringWithFormat:NSLocalizedString(@"ASK_USER", nil), self.helper.name];
+    
+    [self.askUserField setFont:[UIFont systemFontOfSize:25]];
+    [self.askUserField setTextAlignment:NSTextAlignmentCenter];
+    
 }
 
 - (void)didReceiveMemoryWarning

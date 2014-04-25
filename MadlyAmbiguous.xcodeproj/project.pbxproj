@@ -23,12 +23,15 @@
 		F51FEC1218EEA1B8000E3529 /* OSUUserCoordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51FEC1118EEA1B8000E3529 /* OSUUserCoordViewController.m */; };
 		F51FEC1518EEA6A3000E3529 /* OSUResultsDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */; };
 		F51FEC1818EEB05B000E3529 /* OSUWinLoseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */; };
+		F522F09B19009D6800F221C5 /* ipadCharacter.png in Resources */ = {isa = PBXBuildFile; fileRef = F522F09A19009D6800F221C5 /* ipadCharacter.png */; };
 		F5670AEA18DC1E2F003FE384 /* OSUMadHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */; };
 		F5872DAB18E558B8004399AA /* OSUUserPPAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAA18E558B8004399AA /* OSUUserPPAViewController.m */; };
 		F5872DAE18E57637004399AA /* OSUConsiderationDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */; };
 		F5872DB418E5C223004399AA /* resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB318E5C223004399AA /* resources.bundle */; };
 		F5872DB818E5C9C7004399AA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5872DB718E5C9C7004399AA /* Localizable.strings */; };
 		F5933F7518F810EA007928AE /* CMPopTipView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5933F7418F810EA007928AE /* CMPopTipView.m */; };
+		F5BCEB5C19010800003FB1E8 /* OSUIntroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5BCEB5B19010800003FB1E8 /* OSUIntroViewController.m */; };
+		F5EE406218F83BEB009D78EA /* OSUExampleSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5EE406118F83BEB009D78EA /* OSUExampleSelectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +68,7 @@
 		F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUResultsDisplayViewController.m; sourceTree = "<group>"; };
 		F51FEC1618EEB05A000E3529 /* OSUWinLoseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUWinLoseViewController.h; sourceTree = "<group>"; };
 		F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUWinLoseViewController.m; sourceTree = "<group>"; };
+		F522F09A19009D6800F221C5 /* ipadCharacter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ipadCharacter.png; path = MadlyAmbiguous/resources.bundle/ipadCharacter.png; sourceTree = "<group>"; };
 		F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUMadHelper.h; sourceTree = "<group>"; };
 		F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUMadHelper.m; sourceTree = "<group>"; };
 		F5872DA918E558B8004399AA /* OSUUserPPAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUUserPPAViewController.h; sourceTree = "<group>"; };
@@ -75,6 +79,10 @@
 		F5872DB718E5C9C7004399AA /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = ../Localizable.strings; sourceTree = "<group>"; };
 		F5933F7318F810EA007928AE /* CMPopTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMPopTipView.h; sourceTree = "<group>"; };
 		F5933F7418F810EA007928AE /* CMPopTipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMPopTipView.m; sourceTree = "<group>"; };
+		F5BCEB5A19010800003FB1E8 /* OSUIntroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUIntroViewController.h; sourceTree = "<group>"; };
+		F5BCEB5B19010800003FB1E8 /* OSUIntroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUIntroViewController.m; sourceTree = "<group>"; };
+		F5EE406018F83BEB009D78EA /* OSUExampleSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSUExampleSelectionViewController.h; sourceTree = "<group>"; };
+		F5EE406118F83BEB009D78EA /* OSUExampleSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSUExampleSelectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,7 @@
 		F5104DCD18DA41FE009B7BB3 = {
 			isa = PBXGroup;
 			children = (
+				F522F09A19009D6800F221C5 /* ipadCharacter.png */,
 				F5104DDF18DA41FE009B7BB3 /* MadlyAmbiguous */,
 				F5104DF818DA41FE009B7BB3 /* MadlyAmbiguousTests */,
 				F5104DD818DA41FE009B7BB3 /* Frameworks */,
@@ -134,23 +143,13 @@
 		F5104DDF18DA41FE009B7BB3 /* MadlyAmbiguous */ = {
 			isa = PBXGroup;
 			children = (
+				F5104E0818DA421E009B7BB3 /* Main.storyboard */,
 				F5872DB718E5C9C7004399AA /* Localizable.strings */,
 				F5933F7318F810EA007928AE /* CMPopTipView.h */,
 				F5933F7418F810EA007928AE /* CMPopTipView.m */,
 				F5872DB318E5C223004399AA /* resources.bundle */,
-				F5104E0818DA421E009B7BB3 /* Main.storyboard */,
-				F51FEC1618EEB05A000E3529 /* OSUWinLoseViewController.h */,
-				F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */,
-				F51FEC1318EEA6A3000E3529 /* OSUResultsDisplayViewController.h */,
-				F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */,
-				F51FEC1018EEA1B8000E3529 /* OSUUserCoordViewController.h */,
-				F51FEC1118EEA1B8000E3529 /* OSUUserCoordViewController.m */,
-				F5872DAC18E57637004399AA /* OSUConsiderationDataViewController.h */,
-				F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */,
-				F5872DA918E558B8004399AA /* OSUUserPPAViewController.h */,
-				F5872DAA18E558B8004399AA /* OSUUserPPAViewController.m */,
-				F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */,
-				F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */,
+				F522F0981900999C00F221C5 /* Controllers */,
+				F522F099190099C400F221C5 /* Data */,
 				F5104DE818DA41FE009B7BB3 /* OSUAppDelegate.h */,
 				F5104DE918DA41FE009B7BB3 /* OSUAppDelegate.m */,
 				F5104DEB18DA41FE009B7BB3 /* Images.xcassets */,
@@ -186,6 +185,36 @@
 				F5104DFB18DA41FE009B7BB3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F522F0981900999C00F221C5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F5BCEB5A19010800003FB1E8 /* OSUIntroViewController.h */,
+				F5BCEB5B19010800003FB1E8 /* OSUIntroViewController.m */,
+				F5EE406018F83BEB009D78EA /* OSUExampleSelectionViewController.h */,
+				F5EE406118F83BEB009D78EA /* OSUExampleSelectionViewController.m */,
+				F51FEC1618EEB05A000E3529 /* OSUWinLoseViewController.h */,
+				F51FEC1718EEB05A000E3529 /* OSUWinLoseViewController.m */,
+				F51FEC1318EEA6A3000E3529 /* OSUResultsDisplayViewController.h */,
+				F51FEC1418EEA6A3000E3529 /* OSUResultsDisplayViewController.m */,
+				F51FEC1018EEA1B8000E3529 /* OSUUserCoordViewController.h */,
+				F51FEC1118EEA1B8000E3529 /* OSUUserCoordViewController.m */,
+				F5872DAC18E57637004399AA /* OSUConsiderationDataViewController.h */,
+				F5872DAD18E57637004399AA /* OSUConsiderationDataViewController.m */,
+				F5872DA918E558B8004399AA /* OSUUserPPAViewController.h */,
+				F5872DAA18E558B8004399AA /* OSUUserPPAViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F522F099190099C400F221C5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F5670AE818DC1E2F003FE384 /* OSUMadHelper.h */,
+				F5670AE918DC1E2F003FE384 /* OSUMadHelper.m */,
+			);
+			name = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +296,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F522F09B19009D6800F221C5 /* ipadCharacter.png in Resources */,
 				F5872DB818E5C9C7004399AA /* Localizable.strings in Resources */,
 				F5104E0918DA421E009B7BB3 /* Main.storyboard in Resources */,
 				F5104DE418DA41FE009B7BB3 /* InfoPlist.strings in Resources */,
@@ -294,7 +324,9 @@
 				F5104DEA18DA41FE009B7BB3 /* OSUAppDelegate.m in Sources */,
 				F5104DE618DA41FE009B7BB3 /* main.m in Sources */,
 				F5933F7518F810EA007928AE /* CMPopTipView.m in Sources */,
+				F5BCEB5C19010800003FB1E8 /* OSUIntroViewController.m in Sources */,
 				F51FEC1218EEA1B8000E3529 /* OSUUserCoordViewController.m in Sources */,
+				F5EE406218F83BEB009D78EA /* OSUExampleSelectionViewController.m in Sources */,
 				F51FEC1518EEA6A3000E3529 /* OSUResultsDisplayViewController.m in Sources */,
 				F51FEC1818EEB05B000E3529 /* OSUWinLoseViewController.m in Sources */,
 				F5670AEA18DC1E2F003FE384 /* OSUMadHelper.m in Sources */,
@@ -421,6 +453,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MadlyAmbiguous/MadlyAmbiguous-Prefix.pch";
 				INFOPLIST_FILE = "MadlyAmbiguous/MadlyAmbiguous-Info.plist";
@@ -438,6 +471,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MadlyAmbiguous/MadlyAmbiguous-Prefix.pch";
 				INFOPLIST_FILE = "MadlyAmbiguous/MadlyAmbiguous-Info.plist";
